@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  audit-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install web3 eth-account eth-abi requests pytest
+
+      - name: Run Secret Scanner
+        run: |
+          python scripts/scan_secrets.py
+
+      - name: Python Bytecode Compile Check
+        run: |
+          python -m py_compile src/*.py
+
+      - name: Node.js Syntax Check
+        run: |
+          node --check src/pixelmon_engine.mjs
+          node --check src/solve_seed.mjs
+
+      - name: Run Offline Unit Tests
+        run: |
+          python -m pytest -v tests/

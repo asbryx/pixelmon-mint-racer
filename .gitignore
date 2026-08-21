@@ -1,0 +1,69 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Testing & Linting
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Credentials, Keys & Environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pk
+*pk.txt
+*PK.txt
+*ADRESS.txt
+*wallet*.txt
+*wallets*.txt
+credentials/
+secrets/
+*cookie*
+*session*
+
+# Runtime State & Logs
+*.log
+*.pid
+*.lock
+*.jsonl
+*results*.json
+*result*.json
+*sweep*.json
+output/
+runs/
+state/
